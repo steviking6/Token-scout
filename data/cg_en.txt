@@ -1,0 +1,21 @@
+# Terms and Conditions — Token-scout
+
+**Last updated: October 20, 2026**
+
+## 1. Purpose
+Token-scout is a software project developed for educational and experimental purposes.
+
+## 2. Usage
+Users agree to use the software in compliance with applicable laws and not to use it for malicious purposes.
+
+## 3. Liability
+The software is provided for experimental purposes without guarantees of availability, reliability, or freedom from errors, to the extent permitted by law.
+
+## 4. Personal Data
+Any processing of personal data must comply with applicable regulations, including the GDPR where applicable.
+
+## 5. Intellectual Property
+The project's source code and content remain subject to the rights of their respective owners and any applicable licenses.
+
+## 6. Modifications
+These terms may be updated. Users will be informed of changes where required by applicable law.

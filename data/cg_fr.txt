@@ -1,0 +1,21 @@
+# Conditions générales d'utilisation — Token-scout
+
+**Dernière mise à jour : 20 octobre 2026**
+
+## 1. Objet
+Token-scout est un projet logiciel développé à des fins d'apprentissage et d'expérimentation.
+
+## 2. Utilisation
+L'utilisateur s'engage à utiliser le logiciel conformément aux lois applicables et à ne pas l'employer à des fins malveillantes.
+
+## 3. Responsabilité
+Le logiciel est fourni à titre expérimental, sans garantie de disponibilité, de fiabilité ou d'absence d'erreurs, dans les limites autorisées par la loi.
+
+## 4. Données personnelles
+Tout traitement de données personnelles doit respecter la réglementation applicable, notamment le RGPD lorsque celui-ci s'applique.
+
+## 5. Propriété intellectuelle
+Le code source et les contenus du projet restent soumis aux droits de leurs titulaires respectifs et aux éventuelles licences associées.
+
+## 6. Modifications
+Les présentes conditions peuvent être modifiées. Les utilisateurs seront informés des changements lorsque la réglementation l'exige.
