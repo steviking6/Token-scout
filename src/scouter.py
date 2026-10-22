@@ -7,9 +7,10 @@ import csv
 PRIX_PAR_MILLION = 2.50 # en USD, tokens en entrée 
 FENETRE_CONTEXTE = 128_000 # Tokens 
 
-CHEMIN = Path(__file__).parent.parent 
+CHEMIN = Path(__file__).parent.parent/"data"
 
 def lire_texte(chemin : Path) -> str:
+    print(f"Lecture du fichier : {chemin.name}")
     return chemin.read_text(encoding="utf-8")
 
 def compter_tokens(texte:str, enc) -> int:
@@ -18,14 +19,14 @@ def compter_tokens(texte:str, enc) -> int:
 def visualiser_tokens(texte:str, enc) -> str:
     tokens = enc.encode(texte)
     visuel = []
-    for i in range(0, len(tokens)):
+    for i in range(len(tokens)):
         token = enc.decode([tokens[i]])
         visuel.append(token)
     texte = "|".join(visuel)
     return texte 
 
 def estimer_cout(nb_tokens:int)-> float:
-    return (nb_tokens * PRIX_PAR_MILLION) / 1000000
+    return (nb_tokens * PRIX_PAR_MILLION) / 1000000 
 
 def pourcentage_contexte(nb_tokens:int)->float:
     return nb_tokens/FENETRE_CONTEXTE
@@ -47,27 +48,22 @@ def exporter_csv(lignes: list[dict], chemin: Path)->None:
     if not lignes:
         return 
     with open(chemin, "w", encoding="utf-8", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=lignes[0].keys)
+        writer = csv.DictWriter(file, fieldnames=lignes[0].keys())
         writer.writeheader()
         writer.writerows(lignes)
 
 def main():
-    dossier = CHEMIN
+    
     enc = tiktoken.get_encoding("o200k_base")
     
-    liste_fichiers = []
-    for fichier in dossier.glob("*.txt"):
-        liste_fichiers.append(fichier.name)
-        
     #analyse de fichiers 
-    resultats = []
-    for fichier in liste_fichiers:
-        resultats.append(analyser(dossier/fichier, enc))
-    
-    exporter_csv(resultats)
+    resultats = [analyser(f, enc) for f in CHEMIN.glob("*.txt")]
+    if not resultats:
+        print(f"aucun fichier txt trouvé dans {CHEMIN}")
+        return
+    exporter_csv(resultats, CHEMIN/"resultats.csv")
+    print(f"{len(resultats)} fichiers analysés -> resultats.csv")
         
     
 if __name__ == "__main__":
-    '''encoding_name = str(input("choisissez le type d'encodage"))'''
-    
-    enc = tiktoken.get_encoding(encoding_name="o200k_base")
+    main()
