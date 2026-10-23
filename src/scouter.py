@@ -7,7 +7,7 @@ import csv
 PRIX_PAR_MILLION = 2.50 # en USD, tokens en entrée 
 FENETRE_CONTEXTE = 128_000 # Tokens 
 
-CHEMIN = Path(__file__).parent.parent/"data"
+CHEMIN = Path("data") #.parent.parent/"data"
 
 def lire_texte(chemin : Path) -> str:
     print(f"Lecture du fichier : {chemin.name}")
@@ -29,7 +29,7 @@ def estimer_cout(nb_tokens:int)-> float:
     return (nb_tokens * PRIX_PAR_MILLION) / 1000000 
 
 def pourcentage_contexte(nb_tokens:int)->float:
-    return nb_tokens/FENETRE_CONTEXTE
+    return (nb_tokens/FENETRE_CONTEXTE) * 100
 
 def analyser(chemin:Path, enc)->str:
     texte = lire_texte(chemin)
@@ -57,7 +57,8 @@ def main():
     enc = tiktoken.get_encoding("o200k_base")
     
     #analyse de fichiers 
-    resultats = [analyser(f, enc) for f in CHEMIN.glob("*.txt")]
+    fichiers = list(CHEMIN.glob("*.txt")) + list(CHEMIN.glob("*.py"))
+    resultats = [analyser(f, enc) for f in fichiers]
     if not resultats:
         print(f"aucun fichier txt trouvé dans {CHEMIN}")
         return
